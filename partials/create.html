@@ -1,0 +1,73 @@
+<!-- Page Content -->
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Create
+                <small>a new responsive page</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="~/../index.html">Home</a>
+                </li>
+                <li class="active">Create</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div ng-controller="CreateCtrl">
+                <form ng-submit="CreatePage()">
+                    <div class="form-group">
+                        <label>ID:</label>
+                        <input type="number" ng-model="page.id" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" ng-model="page.title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" ng-model="page.description" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Page Type (0,1,2):</label>
+                        <input type="number" ng-model="page.type" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Active:</label>
+                        <input type="text" ng-model="page.isActive" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Published On:</label>
+                        <input type="date" ng-model="page.publishedOn" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Page</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <ul>
+        <li ng-repeat="page in pages"> {{ page.id}} {{ page.title}} </li>
+    </ul>
+
+    <!--<div class="row">
+        <div class="col-lg-12">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr ng-repeat="data in pagesData">
+                    <td>{{data.name}}</td>
+                    <td>{{data.description}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>-->
+</div>
