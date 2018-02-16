@@ -1,0 +1,47 @@
+<!-- Page Content -->
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">All Pages
+                <small>available are displayed below</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="~/../index.html"><i class="fa fa-home"></i>Home</a></li>
+                <l>|</l>
+                <li class="active">All Pages</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div ng-controller="ShowAllCtrl">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Page ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Is Active</th>
+                            <th scope="col">Published Date</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="page in pages">
+                        <th scope="row">{{page.id}}</th>
+                        <td>{{page.title}}</td>
+                        <td>{{page.description}}</td>
+                        <td>{{page.type}}</td>
+                        <td>{{page.isActive}}</td>
+                        <td>{{page.publishedOn}}</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

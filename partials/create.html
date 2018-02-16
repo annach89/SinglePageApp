@@ -1,0 +1,64 @@
+<!-- Page Content -->
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Create
+                <small>a new responsive page</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="~/../index.html"><i class="fa fa-home"></i>Home</a></li>
+                <l>|</l>
+                <li class="active">Create</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div ng-controller="CreateCtrl">
+                <form ng-submit="submitForm()">
+                    <div class="form-group">
+                        <label>ID:</label>
+                        <input type="number" ng-model="page.id" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" ng-model="page.title" class="form-control" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" ng-model="page.description" class="form-control" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>Page Type:</label>
+                        <select class="form-control" ng-model="page.type" class="form-control" required>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                    <div class="form-group radio-inline">
+                        <label>Active:</label>
+                        <label><input type="radio" name="optradio" ng-model="page.isActive" > True</label>
+                        <label><input type="radio" name="optradio" ng-model="page.isActive" > False</label>
+                    </div>
+                    <div class="form-group radio-inline">
+
+                    </div>
+                    <div class="form-group">
+                        <label>Published On:</label>
+                        <input type="datetime-local" ng-model="page.publishedOn" class="form-control">
+                    </div>
+                    <input type="submit" ngClick="Submit" class="btn btn-primary" value="Create">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

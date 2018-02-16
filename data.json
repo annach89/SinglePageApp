@@ -1,0 +1,20 @@
+{
+  "ResponsivePages": [
+    {
+      "id": 1,
+      "title": "Title 1",
+      "description": "Description 1",
+      "type": 0,
+      "isActive": true,
+      "publishedOn": "2018-02-11T16:54:15.1303203+00:00"
+    },
+    {
+      "id": 2,
+      "title": "Title 2",
+      "description": "Description 2",
+      "type": 0,
+      "isActive": true,
+      "publishedOn": "2018-02-11T16:54:15.1303203+00:00"
+    }
+  ]
+}
