@@ -148,7 +148,7 @@ app.controller('EditCtrl', function ( $scope, $location, $http ) {
         var formData = $scope.page;
 
         var url = 'http://pagesmanagement.azurewebsites.net/api/ResponsivePages/' + formData.id;
-        console.log(formData);
+        //console.log(formData);
 
         $http.put(url, formData)
             .then(
