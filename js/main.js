@@ -115,30 +115,59 @@ app.controller('DeleteCtrl', function ( $scope, $location, $http ) {
  * Controls the Edit Page
  */
 app.controller('EditCtrl', function ( $scope, $location, $http ) {
-    console.log("Edit Controller reporting for duty.");
+
+    $scope.show = false;
 
     $scope.submitForm = function() {
         var formData = $scope.page;
 
-        console.log('http://pagesmanagement.azurewebsites.net/api/ResponsivePages/' + formData.id);
         var url = 'http://pagesmanagement.azurewebsites.net/api/ResponsivePages/' + formData.id;
 
         $http.get(url).then(function(response) {
+            //open form to edit page with given ID
+            $scope.show = true;
+
+            var html = '<div class="alert alert-success" role="alert"><strong>Edit</strong> Responsive Page ' + formData.id + '.</div>';
+            jQuery('form.submitId').prepend(html);
+
             $scope.pages = response.data;
 
-        }), function (error) {
-            console.log(response);
+        }, function (error) {
+            console.log(error);
             var html = '<div class="alert alert-danger" role="alert">Something went wrong. ID '+ formData.id + ' does not exist.</div>';
-            jQuery('form').prepend(html);
-        };
+            jQuery('form.submitId').prepend(html);
+
+        });
+
+        setTimeout(function(){ jQuery('form.submitId .alert').remove() }, 4000);
     };
+
+
 
     $scope.editForm = function() {
         var formData = $scope.page;
 
+        var url = 'http://pagesmanagement.azurewebsites.net/api/ResponsivePages/' + formData.id;
         console.log(formData);
+
+        $http.put(url, formData)
+            .then(
+                function(response){
+                    console.log(response);
+                    var html = '<div class="alert alert-success" role="alert"><strong>Success! </strong> Responsive Page ' + formData.id + ' edited succcessfully!</div>';
+                    jQuery('form.editId').prepend(html);
+                },
+                function(response){
+                    // failure callback
+                    console.log("error");
+                    var html = '<div class="alert alert-danger" role="alert">Something went wrong. Please try again.</div>';
+                    jQuery('form.editId').prepend(html);
+                }
+            );
+
+        setTimeout(function(){ jQuery('form.editId .alert').remove() }, 4000);
     }
-    setTimeout(function(){ jQuery('form .alert').remove() }, 4000);
+
 
 });
 

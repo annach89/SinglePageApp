@@ -148,12 +148,7 @@ footer {
     word-break: break-all;
 }
 
-/* Responsive Styles */
-@media (max-width: 767px) {
-
-    .carousel {
-        height: 70%;
-        /* increases the carousel height so it looks good on phones */
-    }
+.col-sm-3 {
+    padding-left: 0;
 }
 
