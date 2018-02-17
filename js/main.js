@@ -37,18 +37,39 @@ app.controller('ShowAllCtrl', function ( $scope, $location, $http ) {
  */
 app.controller('CreateCtrl', function ( $scope, $location, $http ) {
 
-    var formData = {
-        'id' : 'default',
-        'title' : 'default',
-        'description': 'default',
-        'type':'default',
-        'isActive':'default',
-        'publishedOn':'default'
-    };
-
 
     $scope.submitForm = function() {
         var formData = $scope.page;
+
+
+        if ( formData.description == null ) {
+            formData.description = '';
+        }
+        if (  formData.isActive == null ) {
+            formData.isActive = 'true';
+        }
+        if (  formData.publishedOn == null ) {
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd;
+            }
+            if(mm<10){
+                mm='0'+mm;
+            }
+
+            var hour = today.getHours();
+            var min = today.getMinutes();
+            var sec = today.getSeconds();
+
+            var today = yyyy +'-' + mm + '-' + dd + 'T' + hour + ':' + min + ':' + sec;
+
+            formData.publishedOn = today;
+        }
 
         $http.post(
             'http://pagesmanagement.azurewebsites.net/api/ResponsivePages',
@@ -143,23 +164,47 @@ app.controller('EditCtrl', function ( $scope, $location, $http ) {
     };
 
 
-
     $scope.editForm = function() {
         var formData = $scope.page;
 
+        if ( formData.description == null ) {
+            formData.description = '';
+        }
+        if (  formData.isActive == null ) {
+            formData.isActive = 'true';
+        }
+        if (  formData.publishedOn == null ) {
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd;
+            }
+            if(mm<10){
+                mm='0'+mm;
+            }
+
+            var hour = today.getHours();
+            var min = today.getMinutes();
+            var sec = today.getSeconds();
+
+            var today = yyyy +'-' + mm + '-' + dd + 'T' + hour + ':' + min + ':' + sec;
+
+            formData.publishedOn = today;
+        }
+
         var url = 'http://pagesmanagement.azurewebsites.net/api/ResponsivePages/' + formData.id;
-        //console.log(formData);
 
         $http.put(url, formData)
             .then(
                 function(response){
-                    console.log(response);
                     var html = '<div class="alert alert-success" role="alert"><strong>Success! </strong> Responsive Page ' + formData.id + ' edited succcessfully!</div>';
                     jQuery('form.editId').prepend(html);
                 },
                 function(response){
-                    // failure callback
-                    console.log("error");
                     var html = '<div class="alert alert-danger" role="alert">Something went wrong. Please try again.</div>';
                     jQuery('form.editId').prepend(html);
                 }
